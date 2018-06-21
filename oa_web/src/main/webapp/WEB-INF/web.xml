@@ -18,7 +18,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
-    <!-- 默认让servlet处理静态资源 -->
+    <!--  默认让servlet处理静态资源 -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/assets/*</url-pattern>
@@ -29,7 +29,7 @@
         <url-pattern>*.gif</url-pattern>
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.css</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> 
 
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
