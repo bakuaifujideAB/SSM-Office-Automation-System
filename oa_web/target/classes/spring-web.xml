@@ -27,11 +27,11 @@
     </bean>
 
     <!-- 权限拦截器-->
-    <!-- <mvc:interceptors>
+    <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="com.imooc.oa.global.LoginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors> -->
+    </mvc:interceptors> 
 
 </beans>

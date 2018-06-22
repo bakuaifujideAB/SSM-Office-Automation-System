@@ -10,9 +10,9 @@
 
     <title> 爱慕课OA--欢迎使用爱慕课OA系统 </title>
 
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/assets/skin/default_skin/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/assets/admin-tools/admin-forms/css/admin-forms.css">
-    <link rel="shortcut icon" href="${pageContext.request.contextPath }/assets/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.ico">
 </head>
 
 <body class="admin-validation-page" data-spy="scroll" data-target="#nav-spy" data-offset="200">
@@ -27,23 +27,23 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown menu-merge">
                 <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-                    <img src="${pageContext.request.contextPath }/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-                    <span class="hidden-xs pl15"> 刘备 </span>
+                    <img src="${pageContext.request.contextPath}/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
+                    <span class="hidden-xs pl15"> ${sessionScope.employee.name} </span>
                     <span class="caret caret-tp hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
                     <li class="list-group-item">
-                        <a href="/self" class="animated animated-short fadeInUp">
+                        <a href="${pageContext.request.contextPath}/self" class="animated animated-short fadeInUp">
                             <span class="fa fa-user"></span> 个人信息
                             <span class="label label-warning"></span>
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/to_change_password" class="animated animated-short fadeInUp">
+                        <a href="${pageContext.request.contextPath}/to_change_password" class="animated animated-short fadeInUp">
                             <span class="fa fa-gear"></span> 设置密码 </a>
                     </li>
                     <li class="dropdown-footer">
-                        <a href="/quit" class="">
+                        <a href="${pageContext.request.contextPath}/quit" class="">
                             <span class="fa fa-power-off pr5"></span> 退出 </a>
                     </li>
                 </ul>
@@ -56,12 +56,12 @@
                 <div class="sidebar-widget author-widget">
                     <div class="media">
                         <a class="media-left" href="#">
-                            <img src="${pageContext.request.contextPath }/assets/img/avatars/3.jpg" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/assets/img/avatars/3.jpg" class="img-responsive">
                         </a>
                         <div class="media-body">
-                            <div class="media-author">刘备--总经理</div>
+                            <div class="media-author">${sessionScope.employee.name}--${sessionScope.employee.post}</div>
                             <div class="media-links">
-                                <a href="/quit">退出</a>
+                                <a href="${pageContext.request.contextPath}/quit">退出</a>
                             </div>
                         </div>
                     </div>
@@ -107,11 +107,11 @@
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="/employee/list">
+                            <a href="${pageContext.request.contextPath}/employee/list">
                                 <span class="glyphicon glyphicon-calendar"></span> 所有员工 </a>
                         </li>
                         <li class="active">
-                            <a href="/employee/to_add">
+                            <a href="${pageContext.request.contextPath}/employee/to_add">
                                 <span class="glyphicon glyphicon-check"></span> 添加员工 </a>
                         </li>
                     </ul>
@@ -124,11 +124,11 @@
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="/department/list">
+                            <a href="${pageContext.request.contextPath}/department/list">
                                 <span class="glyphicon glyphicon-calendar"></span> 所有部门 </a>
                         </li>
                         <li class="active">
-                            <a href="/department/to_add">
+                            <a href="${pageContext.request.contextPath}/department/to_add">
                                 <span class="glyphicon glyphicon-check"></span> 添加部门 </a>
                         </li>
                     </ul>
