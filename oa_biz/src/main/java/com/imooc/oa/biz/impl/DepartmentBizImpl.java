@@ -9,7 +9,7 @@ import com.imooc.oa.biz.DepartmentBiz;
 import com.imooc.oa.dao.DepartmentDao;
 import com.imooc.oa.entity.Department;
 
-@Service
+@Service("departmentBiz")
 public class DepartmentBizImpl implements DepartmentBiz {
 
 	@Autowired

@@ -37,7 +37,7 @@
         select e.*,d.sn dsn,d.name dname from employee e left join department d on d.sn=e.department_sn
     </select>
     
-    <select id="selectByDepartmentAndPost" resultMap="employee">
+    <!-- <select id="selectByDepartmentAndPost" resultMap="employee">
         select e.*,d.sn dsn,d.name dname from employee e left join department d on d.sn=e.department_sn
         where e.sn is not NULL
         <if test="dsn!=null">
@@ -46,5 +46,5 @@
         <if test="post!=null">
             and e.post=#{post}
         </if>
-    </select>
+    </select> -->
 </mapper>
