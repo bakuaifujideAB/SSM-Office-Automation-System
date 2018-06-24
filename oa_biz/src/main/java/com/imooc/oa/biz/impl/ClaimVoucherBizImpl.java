@@ -49,4 +49,52 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		return dealRecordDao.selectByClaimVoucher(cvid);
 	}
 
+	public List<ClaimVoucher> getForSelf(String sn) {
+		return claimVoucherDao.selectByCreateSn(sn);
+	}
+
+	public List<ClaimVoucher> getForDeal(String sn) {
+		return claimVoucherDao.selectByNextDealSn(sn);
+	}
+
+	public void update(ClaimVoucher claimVoucher, List<ClaimVoucherItem> items) {
+		claimVoucher.setNextDealSn(claimVoucher.getCreateSn());
+		claimVoucher.setStatus(Contant.CLAIMVOUCHER_CREATED);
+		claimVoucherDao.update(claimVoucher);
+
+		List<ClaimVoucherItem> olds = claimVoucherItemDao.selectByClaimVoucher(claimVoucher.getId());
+		for (ClaimVoucherItem old : olds) {
+			boolean isHave = false;
+			for (ClaimVoucherItem item : items) {
+				if (item.getId() == old.getId()) {
+					isHave = true;
+					break;
+				}
+			}
+			// 如果在新的items中不存在旧条目，则删除旧条目
+			if (!isHave) {
+				claimVoucherItemDao.delete(old.getId());
+			}
+		}
+		for (ClaimVoucherItem item : items) {
+			item.setClaimVoucherId(claimVoucher.getId());
+			if (item.getId() != null && item.getId() > 0) {
+				claimVoucherItemDao.update(item);
+			} else {
+				claimVoucherItemDao.insert(item);
+			}
+		}
+
+	}
+
+	public void submit(int id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void deal(DealRecord dealRecord) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
