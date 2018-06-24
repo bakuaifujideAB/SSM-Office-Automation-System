@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.imooc.oa.biz.ClaimVoucherBiz;
 import com.imooc.oa.dto.ClaimVoucherInfo;
+import com.imooc.oa.entity.DealRecord;
 import com.imooc.oa.entity.Employee;
 import com.imooc.oa.global.Contant;
 
@@ -79,6 +80,34 @@ public class ClaimVoucherController {
 		Employee employee = (Employee) session.getAttribute("employee");
 		info.getClaimVoucher().setCreateSn(employee.getSn());
 		claimVoucherBiz.update(info.getClaimVoucher(), info.getItems());
+		return "redirect:deal";
+	}
+
+	// 进行报销单提交操作
+	@RequestMapping("/submit")
+	public String submit(int id) {
+		claimVoucherBiz.submit(id);
+		return "redirect:deal";
+	}
+
+	// 进入审核报销单页面
+	@RequestMapping("/to_check")
+	public String toCheck(int id, Map<String, Object> map) {
+		map.put("claimVoucher", claimVoucherBiz.get(id));
+		map.put("items", claimVoucherBiz.getItems(id));
+		map.put("records", claimVoucherBiz.getRecords(id));
+		DealRecord dealRecord = new DealRecord();
+		dealRecord.setClaimVoucherId(id);
+		map.put("record", dealRecord);
+		return "claim_voucher_check";
+	}
+
+	// 进行审核操作
+	@RequestMapping("/check")
+	public String check(HttpSession session, DealRecord dealRecord) {
+		Employee employee = (Employee) session.getAttribute("employee");
+		dealRecord.setDealSn(employee.getSn());
+		claimVoucherBiz.deal(dealRecord);
 		return "redirect:deal";
 	}
 }

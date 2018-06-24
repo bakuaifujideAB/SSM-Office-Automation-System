@@ -2,6 +2,7 @@ package com.imooc.oa.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.imooc.oa.entity.Employee;
@@ -19,4 +20,5 @@ public interface EmployeeDao {
 
 	List<Employee> selectAll();
 
+	List<Employee> selectByDepartmentAndPost(@Param("dsn") String dsn, @Param("post") String post);
 }
